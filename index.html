@@ -9,15 +9,14 @@
         :root {
             --primary: #FF6B00; /* 情熱のオレンジ */
             --secondary: #1A237E; /* 知的なネイビー */
+            --community-bg: #FFF3E0; /* コミュニティ用の温かい背景 */
             --bg: #f8f9fa;
             --white: #ffffff;
             --text: #2c3e50;
             --gray: #6c757d;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
@@ -28,7 +27,6 @@
             line-height: 1.7;
         }
 
-        /* Hero Section - レスポンシブ対応 */
         header {
             background: linear-gradient(rgba(26, 35, 126, 0.7), rgba(0, 0, 0, 0.7)), url('images/hero.jpg');
             background-size: cover;
@@ -40,7 +38,7 @@
         }
 
         .hero-title {
-            font-size: clamp(2rem, 8vw, 3.5rem); /* 画面幅に合わせて伸縮 */
+            font-size: clamp(2rem, 8vw, 3.5rem);
             margin: 0;
             font-weight: 900;
             letter-spacing: 2px;
@@ -53,14 +51,12 @@
             opacity: 0.9;
         }
 
-        /* Container */
         .container {
             max-width: 800px;
             margin: -40px auto 80px;
             padding: 0 15px;
         }
 
-        /* Intro Section */
         .intro-box {
             background: var(--white);
             padding: clamp(25px, 5vw, 40px);
@@ -76,7 +72,6 @@
             font-size: clamp(1.3rem, 5vw, 1.8rem);
         }
 
-        /* Workshop Cards */
         .ws-card {
             background: var(--white);
             border-radius: 20px;
@@ -87,7 +82,6 @@
             flex-direction: column;
         }
 
-        /* 画像をレスポンシブに */
         .ws-image-container {
             width: 100%;
             height: 220px;
@@ -101,13 +95,9 @@
             transition: transform 0.5s ease;
         }
 
-        .ws-card:hover .ws-image {
-            transform: scale(1.05);
-        }
+        .ws-card:hover .ws-image { transform: scale(1.05); }
 
-        .ws-body {
-            padding: clamp(20px, 5vw, 35px);
-        }
+        .ws-body { padding: clamp(20px, 5vw, 35px); }
 
         .ws-date-badge {
             display: inline-block;
@@ -135,7 +125,6 @@
             color: #444;
         }
 
-        /* CTA Button - スマホで押しやすく */
         .cta-btn {
             display: flex;
             align-items: center;
@@ -156,10 +145,59 @@
         .cta-btn:hover {
             background: #e65a00;
             transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(255, 107, 0, 0.3);
         }
 
-        /* Footer */
+        /* --- Community Section --- */
+        .community-section {
+            background-color: var(--community-bg);
+            border-radius: 30px;
+            padding: clamp(30px, 8vw, 60px) 20px;
+            text-align: center;
+            margin-bottom: 80px;
+            border: 2px dashed var(--primary);
+        }
+
+        .community-banner {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .community-title {
+            font-size: clamp(1.5rem, 6vw, 2.2rem);
+            color: var(--secondary);
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .community-text {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .community-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .community-btn:hover {
+            background: #000;
+            transform: scale(1.05);
+        }
+
         footer {
             text-align: center;
             padding: 60px 20px;
@@ -169,9 +207,7 @@
             border-top: 1px solid #eee;
         }
 
-        /* Desktop specific adjustments */
         @media (min-width: 769px) {
-            .hero-title { letter-spacing: 4px; }
             .ws-image-container { height: 300px; }
         }
     </style>
@@ -191,48 +227,50 @@
 
     <!-- WS 1: Diet -->
     <article class="ws-card">
-        <div class="ws-image-container">
-            <img src="images/diet.jpg" alt="ライバーダイエット" class="ws-image">
-        </div>
+        <div class="ws-image-container"><img src="images/diet.jpg" alt="ライバーダイエット" class="ws-image"></div>
         <div class="ws-body">
             <span class="ws-date-badge"><i class="far fa-calendar-alt"></i> 5月1日(金) 21:00-22:00</span>
             <h2 class="ws-title">【ライバーダイエット】<br>脂肪燃焼×ライブ配信</h2>
-            <div class="ws-text">日本人が最も体重を増やす「1月」と「5月」。
-科学的に脂肪を燃やす仕組みを、サプリ変態薬剤師がエビデンスを交えて紐解きます。
-ライブ配信を活用した、人生のタイパを最大化するダイエット体験を。</div>
+            <div class="ws-text">科学的に脂肪を燃やす仕組みを、サプリ変態薬剤師が紐解きます。人生のタイパを最大化するダイエット体験を。</div>
             <a href="https://forms.gle/5XAhfQ7T3XfFHzM89" class="cta-btn" target="_blank">詳細・お申し込み <i class="fas fa-fire"></i></a>
         </div>
     </article>
 
     <!-- WS 2: Tech -->
     <article class="ws-card">
-        <div class="ws-image-container">
-            <img src="images/tech.jpg" alt="AI技術習得" class="ws-image">
-        </div>
+        <div class="ws-image-container"><img src="images/tech.jpg" alt="AI技術習得" class="ws-image"></div>
         <div class="ws-body">
             <span class="ws-date-badge"><i class="far fa-calendar-alt"></i> 5月15日(金) 20:00-21:00</span>
             <h2 class="ws-title">【AI×GitHub】<br>プロダクト開発プロセス習得</h2>
-            <div class="ws-text">AIにコードを書かせ、GitHubで公開する。
-「買う」側から「作る」側へ、仕事の体質改善をしませんか？
-スマート名刺制作を教材に、一生モノの「自作のプロセス」をあなたの血肉にします。</div>
+            <div class="ws-text">AIにコードを書かせ、GitHubで公開する。「買う」側から「作る」側へ。一生モノの「自作のプロセス」を習得します。</div>
             <a href="https://forms.gle/3fW3UAJa8YDTXTbc7" class="cta-btn" target="_blank">詳細・お申し込み <i class="fas fa-code"></i></a>
         </div>
     </article>
 
     <!-- WS 3: Mind -->
     <article class="ws-card">
-        <div class="ws-image-container">
-            <img src="images/mind.jpg" alt="言語化" class="ws-image">
-        </div>
+        <div class="ws-image-container"><img src="images/mind.jpg" alt="言語化" class="ws-image"></div>
         <div class="ws-body">
             <span class="ws-date-badge"><i class="far fa-calendar-alt"></i> 5月19日(火) 21:00-22:00</span>
             <h2 class="ws-title">自分を整え、ご縁を繋ぐ。<br>〜軸のある名刺の作り方〜</h2>
-            <div class="ws-text">寄り添うコーチ・中島あずさ氏との特別コラボ。
-自分の軸が整うと、仕事はもっと優しくなる。
-相手に「？」を渡さない、あなたらしさが一瞬で伝わる名刺と言葉を整えましょう。</div>
-            <a href="https://forms.gle/XK8D6hEWi1Emonfd9" class="cta-btn">詳細・お申し込み <i class="fas fa-heart"></i></a>
+            <div class="ws-text">想いを言語化するコーチ・中島あずさ氏コラボ。相手に「？」を渡さない、あなたらしさが伝わる言葉を整えましょう。</div>
+            <a href="https://forms.gle/XK8D6hEWi1Emonfd9" class="cta-btn" target="_blank">詳細・お申し込み <i class="fas fa-heart"></i></a>
         </div>
     </article>
+
+    <!-- --- Community Section --- -->
+    <section class="community-section">
+        <img src="images/community.jpg" alt="Loggy Community" class="community-banner">
+        <h2 class="community-title">人生を、遊び尽くすための。<br>Loggy's Community</h2>
+        <p class="community-text">
+            身体を整え、仕組みを創り、心を満たす。単発の学びでは終わらない、
+            高め合える仲間と出会い、共に「人生の体質改善」を続ける場所です。
+        </p>
+        <a href="https://canva.link/akj8kb9fmd6ea9a" class="community-btn" target="_blank">
+            コミュニティを覗いてみる <i class="fas fa-external-link-alt"></i>
+        </a>
+    </section>
+
 </div>
 
 <footer>
