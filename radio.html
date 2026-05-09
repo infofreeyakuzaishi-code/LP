@@ -20,10 +20,9 @@
             background-color: #fffaf0;
             min-height: 100vh;
         }
-        /* ヘッダーは背景のみに */
         header {
             background: linear-gradient(135deg, var(--primary-orange), var(--accent-yellow));
-            height: 180px; /* 高さを固定して安定させる */
+            height: 180px;
             text-align: center;
         }
         
@@ -48,7 +47,6 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
-        /* テキストを写真の下に配置 */
         .header-msg {
             margin: 20px 0 10px;
             font-weight: bold;
@@ -69,29 +67,30 @@
             border-radius: 20px;
             padding: 20px;
             transition: 0.3s;
-            display: block;
-            text-align: left;
+            display: flex; /* 中央寄せのためにflexに変更 */
+            flex-direction: column;
+            align-items: center; /* 子要素を中央に */
+            text-align: center; /* テキストも中央寄せ */
         }
         .menu-card:active { transform: scale(0.98); }
 
-        .menu-card h3 { margin: 0 0 8px 0; font-size: 1.1rem; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
+        .menu-card h3 { margin: 0 0 8px 0; font-size: 1.1rem; color: var(--text-dark); display: flex; align-items: center; gap: 8px; justify-content: center; }
         .menu-card p { margin: 0 0 15px 0; font-size: 0.85rem; color: var(--text-light); line-height: 1.5; }
 
-        /* キランと光るボタン */
+        /* 中央寄せ & キラン！ボタン */
         .btn-mini {
             display: inline-block;
             background-color: var(--line-green);
             color: white;
-            padding: 10px 25px;
+            padding: 10px 40px; /* 横幅を少し広げて押しやすく */
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);
             position: relative;
-            overflow: hidden; /* 光がはみ出さないように */
+            overflow: hidden;
         }
 
-        /* キランのアニメーション設定 */
         .btn-mini::before {
             content: "";
             position: absolute;
@@ -101,7 +100,7 @@
             height: 200%;
             background: rgba(255, 255, 255, 0.5);
             transform: rotate(45deg);
-            animation: kira 3s infinite; /* 3秒おきに光る */
+            animation: kira 3s infinite;
         }
 
         @keyframes kira {
@@ -120,7 +119,6 @@
 <div class="container">
     <img src="images/profile-img.png" alt="薬剤師ろぎー" class="profile-img">
     
-    <!-- テキストをここに移動しました -->
     <p class="header-msg">お坊さんとくーさんのラジオを<br>聴いた皆さまへ</p>
     
     <h1>薬剤師ろぎー</h1>
