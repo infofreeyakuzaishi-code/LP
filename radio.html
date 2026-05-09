@@ -17,27 +17,34 @@
             line-height: 1.6;
             margin: 0;
             color: var(--text-dark);
-            background: linear-gradient(180deg, #fffaf0 0%, #ffffff 100%);
+            background-color: #fffaf0;
             min-height: 100vh;
         }
+        /* ヘッダーの重なりを解消するための余白設定 */
         header {
             background: linear-gradient(135deg, var(--primary-orange), var(--accent-yellow));
             color: white;
-            padding: 60px 20px 120px;
+            padding: 80px 20px 140px; /* 下側の余白をたっぷり確保 */
             text-align: center;
         }
-        header p { margin: 0; font-weight: bold; letter-spacing: 0.1em; opacity: 0.9; }
+        header p { 
+            margin: 0; 
+            font-weight: bold; 
+            letter-spacing: 0.05em; 
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
         
         .container {
-            max-width: 500px; /* 少しスリムに */
-            margin: -90px auto 40px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            max-width: 500px;
+            margin: -100px auto 40px;
+            background: white;
             padding: 30px 20px;
             border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             position: relative;
             text-align: center;
+            width: 90%; /* スマホで横幅いっぱいに */
         }
         .profile-img {
             width: 180px;
@@ -46,54 +53,48 @@
             object-fit: cover;
             border: 6px solid white;
             margin-top: -120px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
-        h1 { margin: 20px 0 5px; font-size: 1.6rem; letter-spacing: 0.05em; }
-        .tagline { color: var(--primary-orange); font-weight: bold; margin-bottom: 25px; font-size: 0.95rem; }
-        .intro-text { font-size: 0.9rem; text-align: left; background: #fff9f0; padding: 20px; border-radius: 20px; margin-bottom: 30px; color: #555; border: 1px solid #ffeeda; }
+        h1 { margin: 20px 0 5px; font-size: 1.6rem; }
+        .tagline { color: var(--primary-orange); font-weight: bold; margin-bottom: 25px; font-size: 0.95rem; line-height: 1.5; }
+        .intro-text { font-size: 0.9rem; text-align: left; background: #fff9f0; padding: 20px; border-radius: 20px; margin-bottom: 30px; color: #555; }
         
-        /* スタイリッシュなカードリンク */
-        .menu-selection { display: flex; flex-direction: column; gap: 15px; }
+        /* メニューカード設定 */
+        .menu-selection { display: flex; flex-direction: column; gap: 20px; }
         .menu-card {
-            display: block;
             text-decoration: none;
             background: white;
-            border: 1px solid #eee;
+            border: 2px solid #f0f0f0;
             border-radius: 20px;
             padding: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            transition: 0.3s;
+            display: block;
             text-align: left;
         }
-        .menu-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-yellow);
-            box-shadow: 0 10px 20px rgba(255, 140, 0, 0.1);
-        }
-        .menu-card::after {
-            content: "LINEで詳細を見る →";
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
-            font-size: 0.75rem;
-            color: var(--line-green);
-            font-weight: bold;
-            opacity: 0;
-            transition: 0.3s;
-        }
-        .menu-card:hover::after { opacity: 1; }
-        
-        .menu-card h3 { margin: 0 0 8px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
-        .menu-card p { margin: 0; font-size: 0.85rem; color: var(--text-light); padding-right: 20px; }
+        .menu-card:active { transform: scale(0.98); } /* タップした時の反応 */
 
-        footer { font-size: 0.75rem; color: #bbb; margin-top: 50px; padding-bottom: 30px; letter-spacing: 0.05em; }
+        .menu-card h3 { margin: 0 0 8px 0; font-size: 1.1rem; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
+        .menu-card p { margin: 0 0 15px 0; font-size: 0.85rem; color: var(--text-light); line-height: 1.5; }
+
+        /* ボタンの復活 */
+        .btn-mini {
+            display: inline-block;
+            background-color: var(--line-green);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(6, 199, 85, 0.2);
+        }
+
+        footer { font-size: 0.75rem; color: #bbb; margin-top: 50px; padding-bottom: 30px; text-align: center; }
     </style>
 </head>
 <body>
 
 <header>
-    <p>お坊さんとくーさんのラジオを聴いた皆さまへ</p>
+    <p>お坊さんとくーさんのラジオを<br>聴いた皆さまへ</p>
 </header>
 
 <div class="container">
@@ -108,20 +109,22 @@
     </div>
 
     <div class="menu-selection">
-        <!-- カード全体がリンクになっています -->
         <a href="https://line.me/R/oaMessage/@534uoyka/?【サプリ提案の詳細希望】" class="menu-card">
             <h3>💊 オーダーメイドサプリ</h3>
             <p>18年の知見から、今のあなたに最適な栄養を導き出します。</p>
+            <span class="btn-mini">詳細を見る</span>
         </a>
 
         <a href="https://line.me/R/oaMessage/@534uoyka/?【オンライン薬局について知りたい】" class="menu-card">
             <h3>✨ オンライン薬局</h3>
             <p>もう薬局で待たなくていい。処方箋を写真で送るだけで自宅に薬が届く新しい仕組み。</p>
+            <span class="btn-mini">詳細を見る</span>
         </a>
 
         <a href="https://line.me/R/oaMessage/@534uoyka/?【ライブ配信の相談希望】" class="menu-card">
             <h3>🚀 ライブ配信</h3>
             <p>「繋がる力」と「自己PR」を伝授し年30－100万円の収入増を叶えます。</p>
+            <span class="btn-mini">詳細を見る</span>
         </a>
     </div>
 
