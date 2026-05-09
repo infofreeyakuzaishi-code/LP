@@ -8,72 +8,86 @@
         :root {
             --primary-orange: #FF8C00;
             --accent-yellow: #FFD700;
-            --bg-white: #ffffff;
+            --line-green: #06C755;
             --text-dark: #333;
+            --text-light: #666;
         }
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'BIZ UDPGothic', sans-serif;
             line-height: 1.6;
             margin: 0;
             color: var(--text-dark);
-            background-color: #fffaf0;
+            background: linear-gradient(180deg, #fffaf0 0%, #ffffff 100%);
+            min-height: 100vh;
         }
         header {
             background: linear-gradient(135deg, var(--primary-orange), var(--accent-yellow));
             color: white;
-            padding: 40px 20px;
+            padding: 60px 20px 120px;
             text-align: center;
         }
+        header p { margin: 0; font-weight: bold; letter-spacing: 0.1em; opacity: 0.9; }
+        
         .container {
-            max-width: 600px;
-            margin: -30px auto 40px;
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 500px; /* 少しスリムに */
+            margin: -90px auto 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px 20px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            position: relative;
+            text-align: center;
         }
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid white;
-            margin-top: -100px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 6px solid white;
+            margin-top: -120px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        h1 { margin: 15px 0 5px; font-size: 1.5rem; }
-        .tagline { color: var(--primary-orange); font-weight: bold; margin-bottom: 20px; }
-        .intro-text { font-size: 0.9rem; text-align: left; background: #fef9f0; padding: 15px; border-radius: 10px; margin-bottom: 25px; }
+        h1 { margin: 20px 0 5px; font-size: 1.6rem; letter-spacing: 0.05em; }
+        .tagline { color: var(--primary-orange); font-weight: bold; margin-bottom: 25px; font-size: 0.95rem; }
+        .intro-text { font-size: 0.9rem; text-align: left; background: #fff9f0; padding: 20px; border-radius: 20px; margin-bottom: 30px; color: #555; border: 1px solid #ffeeda; }
         
-        /* メニューカードのデザイン */
-        .menu-selection { text-align: left; }
+        /* スタイリッシュなカードリンク */
+        .menu-selection { display: flex; flex-direction: column; gap: 15px; }
         .menu-card {
-            background: white;
-            border: 2px solid var(--accent-yellow);
-            border-radius: 15px;
-            margin-bottom: 15px;
-            padding: 15px;
-            position: relative;
-        }
-        .menu-card h3 { margin: 0 0 5px 0; font-size: 1rem; color: var(--text-dark); }
-        .menu-card p { margin: 0 0 10px 0; font-size: 0.85rem; color: #666; }
-        
-        .cta-button {
             display: block;
-            background: #06C755; /* LINEカラー */
-            color: white;
             text-decoration: none;
-            padding: 12px;
-            border-radius: 50px;
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+        .menu-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-yellow);
+            box-shadow: 0 10px 20px rgba(255, 140, 0, 0.1);
+        }
+        .menu-card::after {
+            content: "LINEで詳細を見る →";
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 0.75rem;
+            color: var(--line-green);
             font-weight: bold;
-            font-size: 0.9rem;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(6, 199, 85, 0.2);
+            opacity: 0;
             transition: 0.3s;
         }
-        .cta-button:hover { transform: scale(1.02); background: #05b34c; }
+        .menu-card:hover::after { opacity: 1; }
         
-        footer { font-size: 0.8rem; color: #888; margin-top: 40px; text-align: center; }
+        .menu-card h3 { margin: 0 0 8px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
+        .menu-card p { margin: 0; font-size: 0.85rem; color: var(--text-light); padding-right: 20px; }
+
+        footer { font-size: 0.75rem; color: #bbb; margin-top: 50px; padding-bottom: 30px; letter-spacing: 0.05em; }
     </style>
 </head>
 <body>
@@ -82,7 +96,7 @@
     <p>お坊さんとくーさんのラジオを聴いた皆さまへ</p>
 </header>
 
-<div class="container" style="text-align:center;">
+<div class="container">
     <img src="images/profile-img.png" alt="薬剤師ろぎー" class="profile-img">
     
     <h1>薬剤師ろぎー</h1>
@@ -90,30 +104,25 @@
 
     <div class="intro-text">
         ラジオをお聴きいただきありがとうございます！<br>
-        薬剤師歴18年、100年続く人生の旅を「最高に楽しい！」で埋め尽くすために、心と体のメンテナンスをお手伝いしています。気になるメニューのボタンから詳細を受け取ってくださいね。
+        100年続く人生の旅を「最高に楽しい！」で満たすための、心と体のメンテナンスをご提案しています。
     </div>
 
     <div class="menu-selection">
-        <!-- 💊 オーダーメイドサプリ -->
-        <div class="menu-card">
-            <h3>💊 あなた専用の「オーダーメイドサプリ提案」</h3>
+        <!-- カード全体がリンクになっています -->
+        <a href="https://line.me/R/oaMessage/@534uoyka/?【サプリ提案の詳細希望】" class="menu-card">
+            <h3>💊 オーダーメイドサプリ</h3>
             <p>18年の知見から、今のあなたに最適な栄養を導き出します。</p>
-            <a href="https://line.me/R/oaMessage/@534uoyka/?【サプリ提案の詳細希望】" class="cta-button">詳細をLINEで受け取る</a>
-        </div>
+        </a>
 
-        <!-- ✨ オンライン薬局 -->
-        <div class="menu-card">
-            <h3>✨ 薬局に行かずに薬を受取「オンライン薬局」</h3>
-            <p>待ち時間ゼロ。お薬をご自宅までお届けする新しい仕組みです。</p>
-            <a href="https://line.me/R/oaMessage/@534uoyka/?【オンライン薬局について知りたい】" class="cta-button">詳細をLINEで受け取る</a>
-        </div>
+        <a href="https://line.me/R/oaMessage/@534uoyka/?【オンライン薬局について知りたい】" class="menu-card">
+            <h3>✨ オンライン薬局</h3>
+            <p>もう薬局で待たなくていい。処方箋を写真で送るだけで自宅に薬が届く新しい仕組み。</p>
+        </a>
 
-        <!-- 🚀 ライブ配信 -->
-        <div class="menu-card">
-            <h3>🚀 新時代の人脈づくりと自己PR「ライブ配信」</h3>
-            <p>健康の先にある「人生の楽しみ」と「繋がる力」を伝授します。</p>
-            <a href="https://line.me/R/oaMessage/@534uoyka/?【ライブ配信の相談希望】" class="cta-button">詳細をLINEで受け取る</a>
-        </div>
+        <a href="https://line.me/R/oaMessage/@534uoyka/?【ライブ配信の相談希望】" class="menu-card">
+            <h3>🚀 ライブ配信</h3>
+            <p>「繋がる力」と「自己PR」を伝授し年30－100万円の収入増を叶えます。</p>
+        </a>
     </div>
 
     <footer>
