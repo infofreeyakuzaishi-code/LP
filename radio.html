@@ -43,30 +43,37 @@
         }
         h1 { margin: 15px 0 5px; font-size: 1.5rem; }
         .tagline { color: var(--primary-orange); font-weight: bold; margin-bottom: 20px; }
-        .intro-text { font-size: 0.9rem; text-align: left; background: #fef9f0; padding: 15px; border-radius: 10px; }
-        .menu-list { list-style: none; padding: 0; margin: 25px 0; }
-        .menu-list li {
+        .intro-text { font-size: 0.9rem; text-align: left; background: #fef9f0; padding: 15px; border-radius: 10px; margin-bottom: 25px; }
+        
+        /* メニューカードのデザイン */
+        .menu-selection { text-align: left; }
+        .menu-card {
             background: white;
             border: 2px solid var(--accent-yellow);
-            margin-bottom: 10px;
-            padding: 15px;
             border-radius: 15px;
-            font-weight: bold;
+            margin-bottom: 15px;
+            padding: 15px;
+            position: relative;
         }
+        .menu-card h3 { margin: 0 0 5px 0; font-size: 1rem; color: var(--text-dark); }
+        .menu-card p { margin: 0 0 10px 0; font-size: 0.85rem; color: #666; }
+        
         .cta-button {
             display: block;
             background: #06C755; /* LINEカラー */
             color: white;
             text-decoration: none;
-            padding: 18px;
+            padding: 12px;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);
+            font-size: 0.9rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(6, 199, 85, 0.2);
             transition: 0.3s;
         }
-        .cta-button:hover { transform: scale(1.05); }
-        footer { font-size: 0.8rem; color: #888; margin-top: 40px; }
+        .cta-button:hover { transform: scale(1.02); background: #05b34c; }
+        
+        footer { font-size: 0.8rem; color: #888; margin-top: 40px; text-align: center; }
     </style>
 </head>
 <body>
@@ -76,7 +83,6 @@
 </header>
 
 <div class="container" style="text-align:center;">
-    <!-- 写真のファイル名をあなたの画像名に変更してください -->
     <img src="ChatGPT Image 2026年2月3日 17_02_02.png" alt="薬剤師ろぎー" class="profile-img">
     
     <h1>薬剤師ろぎー</h1>
@@ -84,17 +90,31 @@
 
     <div class="intro-text">
         ラジオをお聴きいただきありがとうございます！<br>
-        薬剤師歴18年、100年続く人生の旅を「最高に楽しい！」で埋め尽くすために、心と体のメンテナンスをお手伝いしています。
+        薬剤師歴18年、100年続く人生の旅を「最高に楽しい！」で埋め尽くすために、心と体のメンテナンスをお手伝いしています。気になるメニューのボタンから詳細を受け取ってくださいね。
     </div>
 
-    <ul class="menu-list">
-        <li>💊 あなた専用の「オーダーメイドサプリ提案」</li>
-        <li>✨ 薬局に行かずに薬を受取「オンライン薬局」</li>
-        <li>🚀 新時代の人脈づくりと自己PR「ライブ配信」</li>
-    </ul>
+    <div class="menu-selection">
+        <!-- 💊 オーダーメイドサプリ -->
+        <div class="menu-card">
+            <h3>💊 あなた専用の「オーダーメイドサプリ提案」</h3>
+            <p>18年の知見から、今のあなたに最適な栄養を導き出します。</p>
+            <a href="https://line.me/R/oaMessage/@534uoyka/?【サプリ提案の詳細希望】" class="cta-button">詳細をLINEで受け取る</a>
+        </div>
 
-    <p style="font-size: 0.9rem; margin-bottom: 10px;">＼ 期間限定：60分無料相談も受付中 ／</p>
-    <a href="https://liff.line.me/1654883387-DxN9w07M/c/01KJE92YAQ3YTH339DFHESVVWY/referral?invitationKey=727a72a56f4745c1b33f5a89286d3b7a&utm_source=snsshare&utm_medium=copy_url&q=referred" class="cta-button">公式LINEで特典を受け取る</a>
+        <!-- ✨ オンライン薬局 -->
+        <div class="menu-card">
+            <h3>✨ 薬局に行かずに薬を受取「オンライン薬局」</h3>
+            <p>待ち時間ゼロ。お薬をご自宅までお届けする新しい仕組みです。</p>
+            <a href="https://line.me/R/oaMessage/@534uoyka/?【オンライン薬局について知りたい】" class="cta-button">詳細をLINEで受け取る</a>
+        </div>
+
+        <!-- 🚀 ライブ配信 -->
+        <div class="menu-card">
+            <h3>🚀 新時代の人脈づくりと自己PR「ライブ配信」</h3>
+            <p>健康の先にある「人生の楽しみ」と「繋がる力」を伝授します。</p>
+            <a href="https://line.me/R/oaMessage/@534uoyka/?【ライブ配信の相談希望】" class="cta-button">詳細をLINEで受け取る</a>
+        </div>
+    </div>
 
     <footer>
         &copy; 2026 予防医学薬剤師ろぎー
