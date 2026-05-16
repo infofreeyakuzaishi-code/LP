@@ -3,174 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE INDICATOR | 薬剤師設計のリズムケア</title>
+    <title>THE INDICATOR | 薬剤師設計・自分を可視化するサプリメント</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --main-dark: #0f172a;
-            --accent-emerald: #10b981;
-            --text-gray: #475569;
-            --bg-soft: #f8fafc;
-            --white: #ffffff;
+            --primary: #000;
+            --accent: #27ae60;
+            --text-main: #333;
+            --text-sub: #666;
+            --bg-light: #fdfdfd;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif;
-            color: var(--main-dark);
-            background-color: var(--bg-soft);
-            line-height: 1.7;
+            font-family: "Inter", "Hiragino Sans", sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
+        /* Video Hero Section */
+        .hero-video-container {
+            position: relative;
+            width: 100%;
+            height: 90vh;
+            background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #fff 0%, #f1f5f9 100%);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* ビデオ配置：スタジオで作成した動画ファイルをここに指定 */
+        .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            opacity: 0.6; /* テキストの視認性を上げるために少し暗く */
+            z-index: 1;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: relative;
+            z-index: 2;
             text-align: center;
             padding: 0 20px;
         }
-        .hero-content { max-width: 900px; opacity: 0; animation: fadeInUp 1s forwards; }
-        .hero-tag { font-weight: 700; color: var(--accent-emerald); letter-spacing: 0.2em; margin-bottom: 20px; display: block; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.2; margin-bottom: 30px; letter-spacing: -0.02em; }
-        .hero p { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 40px; }
 
-        /* Floating Image Placeholder */
-        .product-visual {
-            width: 280px;
-            height: 400px;
-            background: #e2e8f0; /* ここに画像が入る */
-            margin: 0 auto 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        .hero-overlay h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-overlay p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        /* Section Styling */
+        section { padding: 120px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 80px; }
+        .section-title h2 { font-size: 2.5rem; letter-spacing: -0.01em; margin-bottom: 15px; }
+
+        /* Indicator Concept */
+        .concept-box {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-style: italic;
-            color: #94a3b8;
+            gap: 60px;
+            background: #fff;
+            padding: 60px;
+            border-radius: 40px;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.03);
+        }
+        .concept-text { flex: 1; }
+        .concept-image { flex: 1; text-align: center; }
+        .concept-image img { 
+            max-width: 100%; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
         }
 
-        /* Sections */
-        section { padding: 100px 20px; max-width: 1100px; margin: 0 auto; }
-        .section-label { text-align: center; margin-bottom: 60px; }
-        .section-label h2 { font-size: 2.2rem; margin-bottom: 15px; }
-
-        /* Feature Grid */
-        .feature-grid {
+        /* Features */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
         }
-        .feature-card {
-            background: var(--white);
+        .card {
+            background: #fff;
             padding: 40px;
-            border-radius: 24px;
-            transition: transform 0.3s ease;
-            border: 1px solid #e2e8f0;
+            border-radius: 30px;
+            border: 1px solid #eee;
+            transition: 0.3s;
         }
-        .feature-card:hover { transform: translateY(-10px); }
-        .feature-card i { font-size: 2rem; color: var(--accent-emerald); margin-bottom: 20px; }
-        .feature-card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .card i { font-size: 2rem; color: var(--accent); margin-bottom: 20px; }
+        .card h3 { margin-bottom: 15px; font-size: 1.4rem; }
 
-        /* Ingredient Highlight */
-        .ingredient-focus {
-            background: var(--main-dark);
-            color: var(--white);
-            padding: 80px 40px;
-            border-radius: 32px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+        /* Pricing & CTA */
+        .cta-section {
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50px;
+            padding: 100px 40px;
             text-align: center;
+            margin: 0 20px 100px;
         }
-        .ing-item h4 { font-size: 1rem; color: var(--accent-emerald); }
-        .ing-item .amount { font-size: 3rem; font-weight: 800; display: block; margin: 10px 0; }
-
-        /* CTA */
-        .cta-section { text-align: center; background: var(--white); border-radius: 32px; padding: 80px 40px; border: 1px solid #e2e8f0; }
-        .btn-main {
+        .price { font-size: 4rem; font-weight: 800; margin: 20px 0; }
+        .btn-large {
             display: inline-block;
-            background: var(--accent-emerald);
-            color: var(--white);
-            padding: 22px 60px;
+            background: var(--accent);
+            color: #fff;
+            padding: 25px 80px;
             border-radius: 100px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.2rem;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
-            transition: all 0.3s ease;
+            font-size: 1.4rem;
+            transition: 0.4s;
         }
-        .btn-main:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4); }
+        .btn-large:hover { background: #2ecc71; transform: scale(1.05); }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .concept-box { flex-direction: column; padding: 30px; }
+            section { padding: 80px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-content">
-            <span class="hero-tag">PHARMACIST DESIGNED</span>
-            <h1>自分自身を「可視化」する、<br>最高純度のリズムケア。</h1>
-            <div class="product-visual">ラベルレスボトルの製品写真</div>
-            <p>単なる栄養補給ではない。今の自分のコンディションを測る「指標」を手に取る。</p>
-            <a href="#order" class="btn-main">今すぐ自分を整える</a>
+    <!-- Hero Section with Video Overview -->
+    <div class="hero-video-container">
+        <!-- 
+            【重要】スタジオタブで作成した動画をダウンロードし、
+            GitHubリポジトリに保存して、src="video.mp4" のように指定してください 
+        -->
+        <video class="bg-video" autoplay muted loop playsinline>
+            <source src="images/brand-movie.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="hero-overlay">
+            <h1>THE INDICATOR</h1>
+            <p>自分自身の「体調」と向き合う、新しいコンディション管理習慣。</p>
         </div>
-    </header>
+    </div>
 
-    <section id="features">
-        <div class="section-label">
-            <h2>身体の声に、耳を傾ける。</h2>
-            <p>日々の「どんより感」を、感覚ではなく「事実」として捉えるための設計 [1]。</p>
-        </div>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <i class="fa-solid fa-microscope"></i>
-                <h3>透明性の証明</h3>
-                <p>中身への自信があるからこそのラベルレス。薬剤師が「何が入っているか」を極限まで突き詰めました [1]。</p>
-            </div>
-            <div class="feature-card">
-                <i class="fa-solid fa-gauge-high"></i>
-                <h3>コンディションの指標</h3>
-                <p>飲んでみて変化を感じにくい時は、食事や休息を見直すチャンス。あなたの毎日のチェック機能として [1, 2]。</p>
-            </div>
-            <div class="feature-card">
-                <i class="fa-solid fa-bolt"></i>
-                <h3>スムーズな維持</h3>
-                <p>エネルギッシュな毎日をサポートし、理想のスタイルを目指すあなたの確かなパートナーになります [2]。</p>
-            </div>
-        </div>
-    </section>
-
+    <!-- Concept Section -->
     <section>
-        <div class="ingredient-focus">
-            <div class="ing-item">
-                <h4>L-Carnitine</h4>
-                <span class="amount">450<small>mg</small></span>
-                <p>エネルギーの根幹を支える [1]</p>
+        <div class="concept-box">
+            <div class="concept-text">
+                <h2>それは、単なるサプリメントを超えた「指標」</h2>
+                <p>薬剤師がこだわり抜いた設計により、日々のコンディションを可視化。飲んでみて「変化を感じにくい」時は、食事や休息を見直す良いタイミング [1, 3]。あなたの毎日を整えるパートナーとして [3]。</p>
             </div>
-            <div class="ing-item">
-                <h4>Green Tea Polyphenol</h4>
-                <span class="amount">333<small>mg</small></span>
-                <p>若々しさを守る力 [1]</p>
+            <div class="concept-image">
+                <!-- ラベルレスカルニチン.png をリポジトリに入れて指定 -->
+                <img src="images/product-bottle.png" alt="ラベルレスパッケージの誠実さ">
+                <p style="margin-top:10px; font-size:0.8rem; color:#999;">中身への自信を象徴するラベルレス [1]</p>
             </div>
         </div>
     </section>
 
-    <section id="order">
-        <div class="cta-section">
-            <h2>まずは1ヶ月、自分を知る。</h2>
-            <p style="margin-bottom: 30px;">変化に耳を傾けることで、新しい自分が見えてくるはずです [2]。</p>
-            <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 20px;">¥6,480 <small style="font-size: 1rem;">(税込)</small></div>
-            <a href="#" class="btn-main">1ヶ月のリズムケアを開始する</a>
-            <p style="margin-top: 20px; font-size: 0.8rem; color: #94a3b8;">※送料・お支払い方法については次ページでご確認いただけます</p>
+    <!-- 4 Features Grid -->
+    <section>
+        <div class="section-title">
+            <h2>Pharmacist’s Standard</h2>
+            <p>薬剤師としての誠実さを、すべての粒に。</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <i class="fa-solid fa-leaf"></i>
+                <h3>透明性の証明</h3>
+                <p>「何が入っているかを正しく知ってほしい」。装飾を削ぎ落としたラベルレスパッケージ [1]。</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-flask"></i>
+                <h3>黄金比の配合</h3>
+                <p>L-カルニチン 450mg × 緑茶ポリフェノール 333mg。エネルギッシュな毎日をサポートします [1, 3]。</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-check-double"></i>
+                <h3>自身の可視化</h3>
+                <p>栄養バランスか、生活習慣か。「重さ」の原因を振り返るきっかけを提供します [1]。</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-infinity"></i>
+                <h3>持続可能な習慣</h3>
+                <p>定価 6,480円。質の高い成分を贅沢に使いながら、無理なく続けられる価格を追求しました [1]。</p>
+            </div>
         </div>
     </section>
+
+    <!-- Marketing Copy Section -->
+    <section style="text-align: center; max-width: 800px;">
+        <h2>スムーズな毎日を維持したいあなたへ</h2>
+        <p style="font-size: 1.2rem; margin: 30px 0;">「代謝を上げたい」——その願いを、運動効率を大切にしたい方の栄養補給として、理想のスタイルを目指すパートナーとして支え続けます [3]。</p>
+    </section>
+
+    <!-- Final CTA -->
+    <section>
+        <div class="cta-section">
+            <h2>まずは1ヶ月、自身の変化に耳を傾ける。</h2>
+            <div class="price">¥6,480 <small style="font-size: 1.2rem;">(税込)</small></div>
+            <a href="#" class="btn-large">リズムケアを今すぐ開始する</a>
+            <p style="margin-top: 30px; font-size: 0.9rem; color: #ccc;">薬剤師設計：L-カルニチン含有サプリメント</p>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding-bottom: 50px; color: #999;">
+        &copy; 2024 The Indicator Project. Developed with Integrity.
+    </footer>
 
 </body>
 </html>
