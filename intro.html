@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHGRID | 溝呂木 俊介 プロフィール</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.05); }
+        }
+        .grid-bg {
+            background-image: linear-gradient(rgba(0, 242, 254, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 242, 254, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+        }
+        .neon-btn:hover {
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-[#060b0f] text-slate-200 min-h-screen flex flex-col items-center justify-between p-4 overflow-x-hidden font-sans">
+
+    <!-- バックグラウンドエフェクト -->
+    <div class="absolute inset-0 grid-bg -z-10"></div>
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-cyan-500/10 rounded-full blur-[80px] -z-10 animate-pulse"></div>
+
+    <!-- メインコンテンツコンテナ -->
+    <main class="w-full max-w-md my-auto flex flex-col items-center text-center space-y-6">
+        
+        <!-- ヘッダー・ロゴ -->
+        <div class="space-y-1">
+            <h1 class="text-2xl font-black tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 font-mono">
+                HEALTHGRID
+            </h1>
+            <p class="text-[10px] text-cyan-400/80 tracking-[0.3em] uppercase font-mono">Connecting Healthcare</p>
+        </div>
+
+        <!-- プロフィールカード -->
+        <div class="w-full bg-[#0b1319]/80 backdrop-blur-xl border border-cyan-500/30 rounded-2xl p-6 neon-glow space-y-4 relative overflow-hidden">
+            <!-- カードの装飾用ライト -->
+            <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+            
+            <div class="space-y-1">
+                <p class="text-xs text-cyan-400/70 font-mono tracking-wider">PHARMACIST & DEVELOPER</p>
+                <h2 class="text-xl font-bold tracking-wide text-white">溝呂木 俊介</h2>
+                <p class="text-xs text-slate-400">Shunsuke Mizorogi</p>
+            </div>
+
+            <p class="text-xs text-slate-300 leading-relaxed text-left border-t border-slate-800 pt-3">
+                18年の臨床経験を持つ薬剤師であり、医療×テクノロジーを繋ぐ開発者。日本全国47都道府県のヘルスケアネットワークの構築、および次世代のスマートインフラプロジェクトを牽引しています。
+            </p>
+        </div>
+
+        <!-- ナビゲーションリンク（4つの導線） -->
+        <div class="w-full space-y-3.5">
+            
+            <!-- ① 事業説明 -->
+            <a href="https://health-infrastructure-project.vercel.app/" target="_blank" class="neon-btn flex items-center justify-between w-full h-14 px-5 bg-gradient-to-r from-cyan-950/40 to-slate-900/40 border border-cyan-500/40 rounded-xl transition-all duration-300 group">
+                <div class="flex items-center space-y-0.5 text-left">
+                    <i data-lucide="activity" class="w-5 h-5 text-cyan-400 mr-3 shrink-0"></i>
+                    <div>
+                        <div class="text-xs font-bold text-white tracking-wide group-hover:text-cyan-400 transition-colors">HEALTHGRID 事業説明</div>
+                        <div class="text-[9px] text-slate-400">プロジェクトの理念とインフラ構想</div>
+                    </div>
+                </div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors group-hover:translate-x-0.5 duration-300"></i>
+            </a>
+
+            <!-- ④ 開発中プロジェクトページ（現在力を入れているため2番目に配置） -->
+            <a href="https://infofreeyakuzaishi-code.github.io/earlobe/index.html" target="_blank" class="neon-btn flex items-center justify-between w-full h-14 px-5 bg-gradient-to-r from-cyan-950/40 to-slate-900/40 border border-cyan-500/40 rounded-xl transition-all duration-300 group relative overflow-hidden">
+                <!-- 特別にここだけ光るラインを追加 -->
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-transparent to-transparent"></div>
+                <div class="flex items-center space-y-0.5 text-left">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-amber-400 mr-3 shrink-0 animate-pulse"></i>
+                    <div>
+                        <div class="text-xs font-bold text-white tracking-wide group-hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+                            次世代プロジェクトページ
+                            <span class="text-[8px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-1 rounded">NEW</span>
+                        </div>
+                        <div class="text-[9px] text-slate-400">現在開発中の次世代アプローチ</div>
+                    </div>
+                </div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors group-hover:translate-x-0.5 duration-300"></i>
+            </a>
+
+            <!-- ② Instagram -->
+            <a href="https://www.instagram.com/yakuzaishi.loggy/" target="_blank" class="neon-btn flex items-center justify-between w-full h-14 px-5 bg-gradient-to-r from-slate-900/40 to-slate-900/40 border border-slate-800 rounded-xl transition-all duration-300 group">
+                <div class="flex items-center space-y-0.5 text-left">
+                    <i data-lucide="instagram" class="w-5 h-5 text-pink-400 mr-3 shrink-0"></i>
+                    <div>
+                        <div class="text-xs font-bold text-white tracking-wide group-hover:text-pink-400 transition-colors">Official Instagram</div>
+                        <div class="text-[9px] text-slate-400">日々の発信・クリエイティブギャラリー</div>
+                    </div>
+                </div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500 group-hover:text-pink-400 transition-colors group-hover:translate-x-0.5 duration-300"></i>
+            </a>
+
+            <!-- ③ 個人LINE -->
+            <a href="https://line.me/ti/p/TObfJdF8Ky" target="_blank" class="neon-btn flex items-center justify-between w-full h-14 px-5 bg-gradient-to-r from-slate-900/40 to-slate-900/40 border border-slate-800 rounded-xl transition-all duration-300 group">
+                <div class="flex items-center space-y-0.5 text-left">
+                    <i data-lucide="message-circle" class="w-5 h-5 text-emerald-400 mr-3 shrink-0"></i>
+                    <div>
+                        <div class="text-xs font-bold text-white tracking-wide group-hover:text-emerald-400 transition-colors">個人LINEでお繋ぎ</div>
+                        <div class="text-[9px] text-slate-400">ダイレクトなご相談・コミュニケーション</div>
+                    </div>
+                </div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors group-hover:translate-x-0.5 duration-300"></i>
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="w-full text-center py-4 text-[9px] font-mono text-slate-600 tracking-wider">
+        &copy; HEALTHGRID. ALL RIGHTS RESERVED.
+    </footer>
+
+    <!-- Lucide Iconsの初期化スクリプト -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
