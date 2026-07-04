@@ -6,13 +6,7 @@
     <title>HEALTHGRID | 溝呂木 俊介 プロフィール</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.05); }
-        }
         .grid-bg {
             background-image: linear-gradient(rgba(0, 242, 254, 0.05) 1px, transparent 1px),
                               linear-gradient(90deg, rgba(0, 242, 254, 0.05) 1px, transparent 1px);
@@ -46,7 +40,6 @@
 
         <!-- プロフィールカード -->
         <div class="w-full bg-[#0b1319]/80 backdrop-blur-xl border border-cyan-500/30 rounded-2xl p-6 neon-glow space-y-4 relative overflow-hidden">
-            <!-- カードの装飾用ライト -->
             <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
             
             <div class="space-y-1">
@@ -65,22 +58,23 @@
             
             <!-- ① 事業説明 -->
             <a href="https://health-infrastructure-project.vercel.app/" target="_blank" class="neon-btn flex items-center justify-between w-full h-14 px-5 bg-gradient-to-r from-cyan-950/40 to-slate-900/40 border border-cyan-500/40 rounded-xl transition-all duration-300 group">
-                <div class="flex items-center space-y-0.5 text-left">
-                    <i data-lucide="activity" class="w-5 h-5 text-cyan-400 mr-3 shrink-0"></i>
+                <div class="flex items-center text-left">
+                    <!-- Activity Icon (SVG) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400 mr-3 shrink-0"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                     <div>
                         <div class="text-xs font-bold text-white tracking-wide group-hover:text-cyan-400 transition-colors">HEALTHGRID 事業説明</div>
                         <div class="text-[9px] text-slate-400">プロジェクトの理念とインフラ構想</div>
                     </div>
                 </div>
-                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors group-hover:translate-x-0.5 duration-300"></i>
+                <!-- Chevron Right (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-cyan-400 transition-colors group-hover:translate-x-0.5 duration-300"><path d="m9 18 6-6-6-6"/></svg>
             </a>
 
-            <!-- ④ 開発中プロジェクトページ（現在力を入れているため2番目に配置） -->
-            <a href="https://infofreeyakuzaishi-code.github.io/earlobe/index.html" target="_blank" class="neon-btn flex items-center justify-between w-full h-14 px-5 bg-gradient-to-r from-cyan-950/40 to-slate-900/40 border border-cyan-500/40 rounded-xl transition-all duration-300 group relative overflow-hidden">
-                <!-- 特別にここだけ光るラインを追加 -->
-                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-transparent to-transparent"></div>
-                <div class="flex items-center space-y-0.5 text-left">
-                    <i data-lucide="sparkles" class="w-5 h-5 text-amber-400 mr-3 shrink-0 animate-pulse"></i>
+            <!-- ④ 開発中プロジェクトページ -->
+            <a href="https://infofreeyakuzaishi-code.github.io/earlobe/index.html" target="_blank" class="neon-btn flex items-center justify-between w-full h-14 px-5 bg-gradient-to-r from-cyan-500/5 via-transparent to-transparent border border-cyan-500/40 rounded-xl transition-all duration-300 group relative overflow-hidden">
+                <div class="flex items-center text-left">
+                    <!-- Sparkles Icon (SVG) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400 mr-3 shrink-0 animate-pulse"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                     <div>
                         <div class="text-xs font-bold text-white tracking-wide group-hover:text-cyan-400 transition-colors flex items-center gap-1.5">
                             次世代プロジェクトページ
@@ -89,31 +83,37 @@
                         <div class="text-[9px] text-slate-400">現在開発中の次世代アプローチ</div>
                     </div>
                 </div>
-                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors group-hover:translate-x-0.5 duration-300"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-cyan-400 transition-colors group-hover:translate-x-0.5 duration-300"><path d="m9 18 6-6-6-6"/></svg>
             </a>
 
-            <!-- ② Instagram -->
+            <!-- ② Instagram（構造を他と完全に統一し修正完了） -->
             <a href="https://www.instagram.com/yakuzaishi.loggy/" target="_blank" class="neon-btn flex items-center justify-between w-full h-14 px-5 bg-gradient-to-r from-slate-900/40 to-slate-900/40 border border-slate-800 rounded-xl transition-all duration-300 group">
-                <div class="flex items-center space-y-0.5 text-left">
-                    <i data-lucide="instagram" class="w-5 h-5 text-pink-400 mr-3 shrink-0"></i>
+                <div class="flex items-center text-left">
+                    <!-- InstagramのSVGアイコン -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-pink-400 mr-3 shrink-0">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                    </svg>
                     <div>
                         <div class="text-xs font-bold text-white tracking-wide group-hover:text-pink-400 transition-colors">Official Instagram</div>
                         <div class="text-[9px] text-slate-400">日々の発信・クリエイティブギャラリー</div>
                     </div>
                 </div>
-                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500 group-hover:text-pink-400 transition-colors group-hover:translate-x-0.5 duration-300"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-pink-400 transition-colors group-hover:translate-x-0.5 duration-300"><path d="m9 18 6-6-6-6"/></svg>
             </a>
 
             <!-- ③ 個人LINE -->
             <a href="https://line.me/ti/p/TObfJdF8Ky" target="_blank" class="neon-btn flex items-center justify-between w-full h-14 px-5 bg-gradient-to-r from-slate-900/40 to-slate-900/40 border border-slate-800 rounded-xl transition-all duration-300 group">
-                <div class="flex items-center space-y-0.5 text-left">
-                    <i data-lucide="message-circle" class="w-5 h-5 text-emerald-400 mr-3 shrink-0"></i>
+                <div class="flex items-center text-left">
+                    <!-- Message Circle Icon (SVG) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-400 mr-3 shrink-0"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
                     <div>
                         <div class="text-xs font-bold text-white tracking-wide group-hover:text-emerald-400 transition-colors">個人LINEでお繋ぎ</div>
                         <div class="text-[9px] text-slate-400">ダイレクトなご相談・コミュニケーション</div>
                     </div>
                 </div>
-                <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors group-hover:translate-x-0.5 duration-300"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-hover:text-emerald-400 transition-colors group-hover:translate-x-0.5 duration-300"><path d="m9 18 6-6-6-6"/></svg>
             </a>
 
         </div>
@@ -124,10 +124,5 @@
     <footer class="w-full text-center py-4 text-[9px] font-mono text-slate-600 tracking-wider">
         &copy; HEALTHGRID. ALL RIGHTS RESERVED.
     </footer>
-
-    <!-- Lucide Iconsの初期化スクリプト -->
-    <script>
-        lucide.createIcons();
-    </script>
 </body>
 </html>
