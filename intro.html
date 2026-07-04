@@ -27,7 +27,7 @@
         /* ふわふわ浮遊するアニメーション */
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(3deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
         }
         .splash-screen {
             animation: fade-out-splash 3.2s forwards cubic-bezier(0.45, 0, 0.55, 1);
@@ -35,7 +35,7 @@
         .main-content {
             animation: fade-in-content 3.5s forwards cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .floating-ear {
+        .floating-logo {
             animation: float 4s ease-in-out infinite;
         }
     </style>
@@ -43,21 +43,49 @@
 <body class="bg-[#fcf8f2] text-[#5c4a42] min-h-screen flex flex-col items-center justify-between p-4 overflow-x-hidden relative">
 
     <!-- ==========================================
-         🌟 1. 最初の3秒間表示される「かわいい」スプラッシュ画面
+         🌟 1. 最初の3秒間表示されるスプラッシュ画面
          ========================================== -->
     <div class="splash-screen absolute inset-0 bg-[#fff5ea] z-50 flex flex-col items-center justify-center p-6 text-center">
-        <!-- 耳たぶをモチーフにした、ぷにぷに感のあるかわいいロゴマーク（SVG） -->
-        <div class="floating-ear w-28 h-28 bg-gradient-to-br from-[#ffb4a2] to-[#e5989b] rounded-[40%_60%_60%_40%/_50%_40%_60%_50%] shadow-lg shadow-[#e5989b]/30 flex items-center justify-center mb-6 border-4 border-white">
-            <span class="text-3xl">👂✨</span>
+        
+        <!-- 🎨 新・オリジナルMIMITABUロゴ（ぷにぷに可愛いベクターデザイン） -->
+        <div class="floating-logo w-32 h-32 flex items-center justify-center mb-6 relative">
+            <!-- 背景のやわらかい光の輪 -->
+            <div class="absolute inset-0 bg-[#ffb4a2]/20 rounded-full blur-xl animate-pulse"></div>
+            
+            <!-- 高級感＆可愛さのあるインラインSVGの耳モチーフイラスト -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-24 h-24 drop-shadow-[0_8px_12px_rgba(229,152,155,0.4)]">
+                <defs>
+                    <!-- 耳たぶのグラデーション（ふんわりピンク桃色） -->
+                    <linearGradient id="earGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffb4a2" />
+                        <stop offset="100%" stop-color="#e5989b" />
+                    </linearGradient>
+                    <!-- きらきらのゴールドグラデーション -->
+                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffb4a2" />
+                        <stop offset="100%" stop-color="#b5838d" />
+                    </linearGradient>
+                </defs>
+                <!-- 耳のぷにぷにした外輪シルエット -->
+                <path d="M45,15 C75,12 85,35 80,55 C75,75 55,85 40,82 C25,80 22,68 30,58 C38,48 42,42 35,32 C30,22 35,16 45,15 Z" fill="url(#earGrad)" />
+                <!-- 耳の内側のやわらかいライン -->
+                <path d="M52,25 C68,23 72,38 68,48 C65,58 55,62 48,60" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" opacity="0.8" />
+                <!-- 耳たぶの「ぷにっ」としたハイライト（白） -->
+                <circle cx="62" cy="68" r="4" fill="#ffffff" opacity="0.9" />
+                <!-- まわりのハッピーなキラキラ輝きマーク -->
+                <path d="M22,25 L24,18 L31,16 L24,14 L22,7 L20,14 L13,16 L20,18 Z" fill="url(#goldGrad)" />
+                <path d="M78,24 L80,20 L85,19 L80,18 L78,14 L76,18 L71,19 L76,20 Z" fill="url(#goldGrad)" transform="scale(0.7) translate(40, 10)" />
+            </svg>
         </div>
+        
         <h1 class="text-3xl font-black tracking-widest text-[#6d594f] mb-2">MIMITABU</h1>
         <p class="text-xs text-[#b5838d] font-bold tracking-wider uppercase">耳からはじまるヘルスケア</p>
         
-        <!-- ローディングのぽちぽちアニメーション -->
+        <!-- ローディング -->
         <div class="flex space-x-1.5 mt-8">
-            <div class="w-2.5 h-2.5 bg-[#e5989b] rounded-full animate-ping"></div>
-            <div class="w-2.5 h-2.5 bg-[#ffb4a2] rounded-full animate-ping [animation-delay:0.2s]"></div>
-            <div class="w-2.5 h-2.5 bg-[#b5838d] rounded-full animate-ping [animation-delay:0.4s]"></div>
+            <div class="w-2 h-2 bg-[#e5989b] rounded-full animate-bounce"></div>
+            <div class="w-2 h-2 bg-[#ffb4a2] rounded-full animate-bounce [animation-delay:0.15s]"></div>
+            <div class="w-2 h-2 bg-[#b5838d] rounded-full animate-bounce [animation-delay:0.3s]"></div>
         </div>
     </div>
 
@@ -67,13 +95,16 @@
          ========================================== -->
     <main class="main-content w-full max-w-md my-auto flex flex-col items-center text-center space-y-6 opacity-0">
         
-        <!-- ちいさなロゴ -->
+        <!-- ヘッダーのミニロゴ（統一感アップ） -->
         <div class="flex items-center gap-2 bg-white/80 px-4 py-1.5 rounded-full border border-[#ffcdb2] shadow-sm">
-            <span class="text-sm">👂</span>
+            <!-- ミニ耳アイコン -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-4 h-4">
+                <path d="M45,15 C75,12 85,35 80,55 C75,75 55,85 40,82 C25,80 22,68 30,58 C38,48 42,42 35,32 C30,22 35,16 45,15 Z" fill="#e5989b" />
+            </svg>
             <span class="text-xs font-black tracking-widest text-[#6d594f] font-mono">MIMITABU</span>
         </div>
 
-        <!-- プロフィールカード（親しみやすい北欧風ナチュラルテイスト） -->
+        <!-- プロフィールカード -->
         <div class="w-full bg-white/90 border-2 border-[#ffcdb2] rounded-3xl p-6 shadow-md shadow-[#b5838d]/5 space-y-3 relative overflow-hidden">
             <div class="space-y-1">
                 <span class="inline-block text-[10px] font-bold text-[#b5838d] bg-[#ffb4a2]/20 px-2 py-0.5 rounded-full tracking-wider">PHARMACIST & DEVELOPER</span>
@@ -86,10 +117,10 @@
             </p>
         </div>
 
-        <!-- ナビゲーションリンク（4つの導線も丸っこく可愛いデザインに統一） -->
+        <!-- ナビゲーションリンク -->
         <div class="w-full space-y-3.5">
             
-            <!-- ④ 耳たぶプロジェクト（一番上に配置して最重要アピール） -->
+            <!-- ④ 耳たぶプロジェクト（最重要アピール） -->
             <a href="https://infofreeyakuzaishi-code.github.io/earlobe/index.html" target="_blank" class="flex items-center justify-between w-full h-14 px-5 bg-gradient-to-r from-[#ffe5d9] to-[#ffcad4] border-2 border-[#ffb4a2] rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-md hover:shadow-[#ffb4a2]/30 group">
                 <div class="flex items-center text-left">
                     <span class="text-xl mr-3 shrink-0 group-hover:animate-bounce">👑</span>
@@ -119,7 +150,7 @@
                     <span class="text-xl mr-3 shrink-0">📸</span>
                     <div>
                         <div class="text-xs font-bold text-[#5c4a42] tracking-wide">Official Instagram</div>
-                        <div class="text-[9px] text-[#a68a80]">日々の発信・クリエイティブギャラリー</div>
+                        <div class="text-[9px] text-slate-400">日々の発信・クリエイティブギャラリー</div>
                     </div>
                 </div>
                 <span class="text-[#d8b4a6] group-hover:translate-x-1 transition-transform">▶</span>
@@ -128,7 +159,6 @@
             <!-- ③ 個人LINE -->
             <a href="https://line.me/ti/p/TObfJdF8Ky" target="_blank" class="flex items-center justify-between w-full h-14 px-5 bg-white border-2 border-[#f4e9dc] rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:border-[#ffcdb2] group">
                 <div class="flex items-center text-left">
-                    <!-- LINE公式風に緑の絵文字 -->
                     <span class="text-xl mr-3 shrink-0">💬</span>
                     <div>
                         <div class="text-xs font-bold text-[#5c4a42] tracking-wide">個人LINEでお繋ぎ</div>
