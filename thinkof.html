@@ -1,42 +1,232 @@
-<section id="step1" class="step active">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>想える人。</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:"Noto Sans JP",sans-serif;
+  background:#F7F6F2;
+  color:#222;
+  overflow:hidden;
+}
+
+.screen{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:32px;
+  animation:fadeIn .9s ease;
+}
+
+.container{
+  width:100%;
+  max-width:520px;
+}
+
+.progress{
+  width:100%;
+  height:6px;
+  background:#E5E1D8;
+  border-radius:999px;
+  overflow:hidden;
+  margin-bottom:24px;
+}
+
+.progress-bar{
+  width:10%;
+  height:100%;
+  background:#222;
+  border-radius:999px;
+}
+
+.step{
+  font-size:12px;
+  letter-spacing:.12em;
+  color:#8A8377;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+h1{
+  font-size:34px;
+  line-height:1.35;
+  font-weight:700;
+  margin-bottom:16px;
+}
+
+.subtitle{
+  color:#666;
+  line-height:1.8;
+  margin-bottom:36px;
+  font-size:16px;
+}
+
+.option{
+  width:100%;
+  background:#FFFFFF;
+  border:1px solid #DDD8CF;
+  border-radius:22px;
+  padding:22px 20px;
+  margin-bottom:16px;
+  text-align:left;
+  font-size:17px;
+  font-weight:500;
+  cursor:pointer;
+  transition:all .25s ease;
+}
+
+.option:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(0,0,0,.08);
+}
+
+.option:active{
+  transform:scale(.985);
+}
+
+.option.selected{
+  background:#F1EEE7;
+  border-color:#222;
+  transform:translateY(-2px);
+}
+
+.footer{
+  text-align:center;
+  color:#8A8377;
+  font-size:13px;
+  margin-top:10px;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:rgba(247,246,242,.92);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .5s ease;
+}
+
+.overlay.show{
+  opacity:1;
+}
+
+.overlay p{
+  font-size:24px;
+  font-weight:600;
+  text-align:center;
+  color:#222;
+  line-height:1.6;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@media(max-width:480px){
+  h1{
+    font-size:28px;
+  }
+
+  .option{
+    padding:20px 18px;
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="screen">
+
   <div class="container">
-    
+
     <div class="progress">
-      <div class="progress-bar" style="width:10%"></div>
+      <div class="progress-bar"></div>
     </div>
 
-    <p class="step-label">STEP 1</p>
+    <div class="step">STEP 1 / 10</div>
 
-    <h1 class="title">
-      何か新しい情報や面白いものを見つけたとき、
+    <h1>
+      何か新しい情報や<br>
+      面白いものを見つけたとき、<br>
       あなたはどうすることが多いですか？
     </h1>
 
     <p class="subtitle">
-      正解・不正解はありません。今の自分に一番近いものを選んでください。
+      正解・不正解はありません。<br>
+      今の自分に一番近いものを選んでください。
     </p>
 
-    <div class="options">
-      <button class="option" data-score="explore:3">
-        まず自分で試してみる
-      </button>
+    <button class="option">まず自分で試してみる</button>
+    <button class="option">周りの人に相談する</button>
+    <button class="option">とりあえず保存して他の情報も見る</button>
+    <button class="option">特に何もしないことが多い</button>
 
-      <button class="option" data-score="explore:2">
-        周りの人に相談する
-      </button>
-
-      <button class="option" data-score="explore:1">
-        とりあえず保存して他の情報も見る
-      </button>
-
-      <button class="option" data-score="explore:0">
-        特に何もしないことが多い
-      </button>
+    <div class="footer">
+      約3分で終わります
     </div>
 
-    <p class="hint">
-      約3分で終わります
-    </p>
-
   </div>
-</section>
+
+</div>
+
+<div class="overlay" id="overlay">
+  <p>
+    新しいことへの向き合い方には、<br>
+    人それぞれのパターンがあります。
+  </p>
+</div>
+
+<script>
+const options=document.querySelectorAll(".option");
+const overlay=document.getElementById("overlay");
+
+options.forEach(btn=>{
+
+  btn.addEventListener("click",()=>{
+
+    options.forEach(o=>o.classList.remove("selected"));
+    btn.classList.add("selected");
+
+    overlay.classList.add("show");
+
+    setTimeout(()=>{
+
+      // ここでSTEP2へ遷移
+      alert("STEP2へ進みます（次回ここを実装）");
+
+    },1400);
+
+  });
+
+});
+</script>
+
+</body>
+</html>
