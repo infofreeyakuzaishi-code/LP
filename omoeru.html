@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>想える人。</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f3ee;
+      --card:#fcfbf8;
+      --text:#1f1f1f;
+      --muted:#6f675c;
+      --line:#ddd6ca;
+      --accent:#1f1f1f;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:"Noto Sans JP",sans-serif;
+      background: radial-gradient(circle at top right,#ffffff 0%,#f6f3ee 55%,#f0ebe3 100%);
+      color:var(--text);
+      overflow:hidden;
+    }
+
+    .screen{
+      position:absolute;
+      inset:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:48px 28px;
+      opacity:0;
+      transform:translateY(20px);
+      transition:opacity .8s ease, transform .8s ease;
+      pointer-events:none;
+    }
+
+    .screen.active{
+      opacity:1;
+      transform:translateY(0);
+      pointer-events:auto;
+    }
+
+    .container{
+      width:100%;
+      max-width:560px;
+    }
+
+    .hero-image{
+      width:100%;
+      aspect-ratio:3/2;
+      border-radius:28px;
+      overflow:hidden;
+      margin-bottom:40px;
+      box-shadow:0 20px 50px rgba(0,0,0,.08);
+    }
+
+    .hero-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .eyebrow{
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#8a8377;
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-family:"Noto Serif JP",serif;
+      font-size:54px;
+      line-height:1.18;
+      font-weight:700;
+      margin-bottom:24px;
+    }
+
+    .lead{
+      font-size:20px;
+      line-height:1.9;
+      color:var(--muted);
+      margin-bottom:40px;
+    }
+
+    .body{
+      font-size:17px;
+      line-height:2;
+      color:var(--muted);
+      margin-bottom:48px;
+    }
+
+    .primary{
+      width:100%;
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      border-radius:999px;
+      padding:22px 28px;
+      font-size:17px;
+      font-weight:600;
+      cursor:pointer;
+      transition:all .25s ease;
+      box-shadow:0 10px 30px rgba(0,0,0,.12);
+    }
+
+    .primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 40px rgba(0,0,0,.16);
+    }
+
+    .progress{
+      width:100%;
+      height:6px;
+      background:#e7dfd2;
+      border-radius:999px;
+      overflow:hidden;
+      margin-bottom:24px;
+    }
+
+    .progress-bar{
+      width:10%;
+      height:100%;
+      background:#1f1f1f;
+      border-radius:999px;
+    }
+
+    .step{
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#8a8377;
+      margin-bottom:20px;
+    }
+
+    .question{
+      font-family:"Noto Serif JP",serif;
+      font-size:40px;
+      line-height:1.35;
+      margin-bottom:20px;
+    }
+
+    .subtitle{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.9;
+      margin-bottom:36px;
+    }
+
+    .option{
+      width:100%;
+      background:rgba(255,255,255,.82);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:24px 22px;
+      margin-bottom:18px;
+      text-align:left;
+      font-size:18px;
+      font-weight:500;
+      cursor:pointer;
+      transition:all .28s ease;
+      backdrop-filter: blur(8px);
+      box-shadow:0 8px 20px rgba(0,0,0,.04);
+    }
+
+    .option:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 36px rgba(0,0,0,.08);
+      border-color:#c8c0b3;
+    }
+
+    .option.selected{
+      background:#f1ece3;
+      border-color:#1f1f1f;
+    }
+
+    .footer{
+      text-align:center;
+      color:#8a8377;
+      font-size:13px;
+      margin-top:10px;
+    }
+
+    .overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(246,243,238,.96);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .6s ease;
+      z-index:100;
+    }
+
+    .overlay.show{
+      opacity:1;
+    }
+
+    .overlay p{
+      font-family:"Noto Serif JP",serif;
+      font-size:34px;
+      line-height:1.8;
+      text-align:center;
+      color:#1f1f1f;
+      max-width:760px;
+      padding:0 24px;
+    }
+
+    @media(max-width:640px){
+      .screen{
+        padding:32px 22px;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      .question{
+        font-size:30px;
+      }
+
+      .lead{
+        font-size:18px;
+      }
+
+      .body{
+        font-size:16px;
+      }
+
+      .option{
+        font-size:16px;
+        padding:20px 18px;
+      }
+
+      .overlay p{
+        font-size:26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- オープニング -->
+  <section class="screen active" id="intro">
+    <div class="container">
+
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80" alt="朝の光">
+      </div>
+
+      <div class="eyebrow">A quiet beginning</div>
+
+      <h1>想える人。</h1>
+
+      <p class="lead">
+        自分のことも、誰かのことも、地域のことも。<br>
+        少しだけ想える人へ。
+      </p>
+
+      <p class="body">
+        何かを売りたいわけではありません。<br>
+        誰かを勧誘したいわけでもありません。<br>
+        ただ、良いものを見つけたときに「この人にも伝えたい」と思ったことがある人。<br>
+        人によって合うものは違うと知っている人。<br>
+        一つの正解より、選択肢を大切にしたい人。<br>
+        そんな人が、全国で少しずつつながり始めています。
+      </p>
+
+      <button class="primary" id="startBtn">
+        3分だけ、あなたの考え方を教えてください
+      </button>
+
+    </div>
+  </section>
+
+  <!-- STEP1 -->
+  <section class="screen" id="step1">
+    <div class="container">
+
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+
+      <div class="step">STEP 1 / 10</div>
+
+      <h2 class="question">
+        何か新しい情報や面白いものを見つけたとき、<br>
+        あなたはどうすることが多いですか？
+      </h2>
+
+      <p class="subtitle">
+        正解・不正解はありません。<br>
+        今の自分に一番近いものを選んでください。
+      </p>
+
+      <button class="option">まず自分で試してみる</button>
+      <button class="option">周りの人に相談する</button>
+      <button class="option">とりあえず保存して他の情報も見る</button>
+      <button class="option">特に何もしないことが多い</button>
+
+      <div class="footer">約3分で終わります</div>
+
+    </div>
+  </section>
+
+  <div class="overlay" id="overlay">
+    <p id="overlayText"></p>
+  </div>
+
+  <script>
+    const userData = {};
+
+    function showScreen(id){
+      document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    document.getElementById('startBtn').addEventListener('click',()=>{
+      showScreen('step1');
+    });
+
+    const overlay = document.getElementById('overlay');
+    const overlayText = document.getElementById('overlayText');
+
+    document.querySelectorAll('#step1 .option').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+
+        document.querySelectorAll('#step1 .option').forEach(o=>o.classList.remove('selected'));
+        btn.classList.add('selected');
+
+        userData.step1 = btn.innerText;
+
+        overlayText.innerHTML =
+          '新しいことへの向き合い方には、<br>人それぞれのパターンがあります。';
+
+        overlay.classList.add('show');
+
+        setTimeout(()=>{
+          overlay.classList.remove('show');
+
+          // 次回、STEP2へ遷移
+          alert('次回、STEP2を実装します');
+        },1400);
+
+      });
+    });
+  </script>
+
+</body>
+</html>
