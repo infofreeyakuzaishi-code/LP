@@ -210,7 +210,7 @@ function nextStep() {
     return;
   }
 
-  stepContainer.classList.add("hidden";
+  stepContainer.classList.add("hidden");
 
   // Part2で日本地図セクションへ進む
   if (typeof showMapSection === "function") {
@@ -498,31 +498,6 @@ reserveForm.addEventListener("submit", async (e) => {
   }
 });
 
-/* =========================================
-  REVEAL (PROJECT / ENDING)
-========================================= */
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
-
-[
-  projectSection,
-  prefectureSection,
-  endingSection,
-].forEach((section) => {
-  if (!section) return;
-
-  section.classList.add("reveal");
-  revealObserver.observe(section);
-});
 
 /* =========================================
   PREFILL
