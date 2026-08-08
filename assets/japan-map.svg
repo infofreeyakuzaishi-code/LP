@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560">
+  <rect width="900" height="560" rx="24" fill="#FBFAF7"/>
+  <g fill="#D9D2C7" stroke="#C8BFB2" stroke-width="2">
+    <rect id="hokkaido" x="120" y="60" width="120" height="70" rx="16"/>
+    <rect x="360" y="120" width="70" height="36" rx="12"/>
+    <rect x="400" y="164" width="70" height="36" rx="12"/>
+    <rect x="438" y="208" width="70" height="36" rx="12"/>
+    <rect id="tokyo" x="476" y="252" width="74" height="38" rx="12"/>
+    <rect x="514" y="298" width="74" height="38" rx="12"/>
+    <rect id="osaka" x="552" y="344" width="78" height="40" rx="12"/>
+    <rect x="596" y="390" width="82" height="42" rx="12"/>
+    <rect id="fukuoka" x="640" y="438" width="86" height="44" rx="12"/>
+    <rect id="okinawa" x="770" y="498" width="72" height="24" rx="12"/>
+  </g>
+  <text x="40" y="34" font-family="Noto Sans JP, sans-serif" font-size="18" fill="#6F675C">Japan map placeholder</text>
+</svg>
