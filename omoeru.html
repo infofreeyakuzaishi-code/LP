@@ -1,2 +1,512 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>想える人。</title>
 
-<!DOCTYPE html><html lang='ja'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>想える人。</title><link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link href='https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap' rel='stylesheet'><link rel='stylesheet' href='style.css'></head><body><section class='hero'><div class='overlay'></div><div class='hero-inner'><p class='eyebrow'>A quiet beginning</p><h1>想える人。</h1><p class='lead'>自分のことも、誰かのことも、地域のことも。少しだけ想える人へ。</p><a class='btn' href='#step1'>3分だけ、あなたの考え方を教えてください</a></div></section><section id='step1' class='section'><div class='container'><div class='progress'><div class='bar' style='width:10%'></div></div><p class='step'>STEP 1 / 10</p><h2>何か新しい情報や面白いものを見つけたとき、あなたはどうすることが多いですか？</h2><div class='grid'><button class='card'>まず自分で試してみる</button><button class='card'>周りの人に相談する</button><button class='card'>とりあえず保存して他の情報も見る</button><button class='card'>特に何もしないことが多い</button></div></div></section><section class='section alt'><div class='container narrow'><p class='eyebrow'>Across Japan</p><h2>北海道にも、沖縄にも、宮古島にも。</h2><p>想える人は、少しずつ増えています。</p><div class='map'>47都道府県マップ（完成版でアニメーション実装）</div></div></section><section class='section'><div class='container narrow'><p class='eyebrow'>30 minutes</p><h2>ここまで読んで、「少しだけ話を聞いてみたい」と思ったら。</h2><p>営業ではありません。価値観が合うかどうかを確認する時間です。</p><a class='btn' href='https://script.google.com/macros/s/AKfycbzkrEJ7dVbWkEYvxW7lE8Pu8REcsWelbscCZtQAwpIYTKQtzs0VeIYw9QnHJFbBPxfWHA/exec'>個別相談を予約する</a></div></section><script src='script.js'></script></body></html>
+  <meta name="description" content="自分のことも、誰かのことも、地域のことも。少しだけ想える人へ。" />
+
+  <meta property="og:title" content="想える人。" />
+  <meta property="og:description" content="価値観でつながる全国プロジェクト" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/ogp.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- =========================================
+SPLASH
+========================================= -->
+
+<div id="splash" class="splash">
+
+  <div class="splash-bg"></div>
+
+  <div class="splash-content">
+
+    <div class="splash-eyebrow">A quiet beginning</div>
+
+    <h1 class="splash-title">想える人。</h1>
+
+    <p class="splash-sub">
+      自分のことも、誰かのことも、地域のことも。
+      少しだけ想える人へ。
+    </p>
+
+  </div>
+
+</div>
+
+<!-- =========================================
+MAIN
+========================================= -->
+
+<div id="app" class="app hidden">
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-image">
+
+      <img src="assets/hero.jpg" alt="宮古島の海" />
+
+      <div class="hero-overlay"></div>
+
+    </div>
+
+    <div class="hero-content">
+
+      <div class="eyebrow">A quiet beginning</div>
+
+      <h1 class="hero-title">想える人。</h1>
+
+      <p class="hero-lead">
+        自分のことも、誰かのことも、地域のことも。
+        少しだけ想える人へ。
+      </p>
+
+      <p class="hero-text">
+        何かを売りたいわけではありません。
+
+        誰かを勧誘したいわけでもありません。
+
+        ただ、良いものを見つけたときに
+        「この人にも伝えたい」と思ったことがある人。
+
+        人によって合うものは違うと知っている人。
+
+        一つの正解より、
+        選択肢を大切にしたい人。
+
+        そんな人が、
+        全国で少しずつつながり始めています。
+      </p>
+
+      <button id="startBtn" class="primary-btn">
+
+        3分だけ、あなたの考え方を教えてください
+
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- STEP CONTAINER -->
+
+  <section id="stepContainer" class="step-container hidden">
+
+    <div class="step-card">
+
+      <div class="progress">
+
+        <div id="progressBar" class="progress-bar"></div>
+
+      </div>
+
+      <div id="stepLabel" class="step-label">
+
+        STEP 1 / 10
+
+      </div>
+
+      <h2 id="question" class="question"></h2>
+
+      <p id="subtitle" class="subtitle"></p>
+
+      <div id="options" class="options"></div>
+
+      <div class="step-footer">
+
+        約3分で終わります
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- INTERLUDE -->
+
+  <section id="interlude" class="interlude hidden">
+
+    <div class="interlude-image">
+
+      <img src="assets/notebook.jpg" alt="ノートとコーヒー" />
+
+    </div>
+
+    <div class="interlude-content">
+
+      <div class="eyebrow">A small realization</div>
+
+      <h2>誰かを思い浮かべることがある人は、想える人かもしれません。</h2>
+
+      <p>
+        良いものを見つけたとき、
+
+        「あの人にも合うかもしれない」と思ったことはありませんか。
+
+        その小さな想像力が、
+
+        誰かの一歩を変えることがあります。
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- MAP -->
+
+  <section id="mapSection" class="map-section hidden">
+
+    <div class="map-header">
+
+      <div class="eyebrow">Across Japan</div>
+
+      <h2>北海道にも、沖縄にも、宮古島にも。</h2>
+
+      <p>想える人は、少しずつ増えています。</p>
+
+    </div>
+
+    <div class="map-wrap">
+
+      <object id="japanMap"
+              type="image/svg+xml"
+              data="assets/japan-map.svg"></object>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECT -->
+
+  <section id="projectSection" class="project-section hidden">
+
+    <div class="project-header">
+
+      <div class="eyebrow">What we are building</div>
+
+      <h2>想える人プロジェクト</h2>
+
+      <p>
+        全国のつながり、
+        地域プロジェクト、
+        届ける仕組み、
+        学び。
+
+        参加費不要・初期費用なし・月額サブスクなし。
+      </p>
+
+    </div>
+
+    <div class="project-grid">
+
+      <div class="project-card">
+
+        <h3>全国のつながり</h3>
+
+        <p>
+          医療・ヘルスケア・地域で活動する人たちとつながる。
+        </p>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>地域プロジェクト</h3>
+
+        <p>
+          各都道府県で小さな取り組みを立ち上げる。
+        </p>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>届ける仕組み</h3>
+
+        <p>
+          良いものを必要な人に、
+          より届けやすくする。
+        </p>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>学び</h3>
+
+        <p>
+          参加は無料。
+          学びたい人だけが講座を選べる。
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+    <!-- PREFECTURE SECTION -->
+
+  <section id="prefectureSection" class="prefecture-section hidden">
+
+    <div class="prefecture-header">
+
+      <div class="eyebrow">Your place</div>
+
+      <h2>あなたが住む地域から始められることがあります。</h2>
+
+      <p>
+        まだ何も決まっていなくて大丈夫です。
+        あなたの地域で、
+        想える人とつながることから始まります。
+      </p>
+
+    </div>
+
+    <div class="prefecture-select-wrap">
+
+      <select id="prefectureSelect" class="prefecture-select">
+
+        <option value="">都道府県を選択してください</option>
+
+        <option>北海道</option>
+        <option>青森県</option>
+        <option>岩手県</option>
+        <option>宮城県</option>
+        <option>秋田県</option>
+        <option>山形県</option>
+        <option>福島県</option>
+        <option>茨城県</option>
+        <option>栃木県</option>
+        <option>群馬県</option>
+        <option>埼玉県</option>
+        <option>千葉県</option>
+        <option>東京都</option>
+        <option>神奈川県</option>
+        <option>新潟県</option>
+        <option>富山県</option>
+        <option>石川県</option>
+        <option>福井県</option>
+        <option>山梨県</option>
+        <option>長野県</option>
+        <option>岐阜県</option>
+        <option>静岡県</option>
+        <option>愛知県</option>
+        <option>三重県</option>
+        <option>滋賀県</option>
+        <option>京都府</option>
+        <option>大阪府</option>
+        <option>兵庫県</option>
+        <option>奈良県</option>
+        <option>和歌山県</option>
+        <option>鳥取県</option>
+        <option>島根県</option>
+        <option>岡山県</option>
+        <option>広島県</option>
+        <option>山口県</option>
+        <option>徳島県</option>
+        <option>香川県</option>
+        <option>愛媛県</option>
+        <option>高知県</option>
+        <option>福岡県</option>
+        <option>佐賀県</option>
+        <option>長崎県</option>
+        <option>熊本県</option>
+        <option>大分県</option>
+        <option>宮崎県</option>
+        <option>鹿児島県</option>
+        <option>沖縄県</option>
+
+      </select>
+
+    </div>
+
+    <button id="prefectureNext" class="primary-btn">
+
+      次へ進む
+
+    </button>
+
+  </section>
+
+  <!-- ENDING -->
+
+  <section id="endingSection" class="ending-section hidden">
+
+    <div class="ending-image">
+
+      <img src="assets/final-woman.jpg" alt="想える人" />
+
+      <div class="ending-overlay"></div>
+
+    </div>
+
+    <div class="ending-content">
+
+      <div class="eyebrow">30 minutes</div>
+
+      <h2>
+        あなたの地域で、
+        誰かと何かを始める未来について。
+      </h2>
+
+      <p>
+        まだ何も決めなくて大丈夫です。
+
+        営業ではありません。
+
+        価値観が合うかどうかを確認する時間です。
+      </p>
+
+      <button id="reserveBtn" class="primary-btn large">
+
+        30分だけ、お話ししませんか
+
+      </button>
+
+      <div class="guide-box">
+
+        <div class="guide-label">案内人</div>
+
+        <div class="guide-name">薬剤師・予防医学士　溝呂木俊介（ろぎー）</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+<!-- =========================================
+RESERVATION MODAL
+========================================= -->
+
+<div id="reserveModal" class="modal hidden">
+
+  <div class="modal-backdrop"></div>
+
+  <div class="modal-content">
+
+    <button id="modalClose" class="modal-close" aria-label="閉じる">
+
+      ×
+
+    </button>
+
+    <div class="modal-header">
+
+      <div class="eyebrow">Reservation</div>
+
+      <h3>30分だけ、お話ししませんか</h3>
+
+      <p>
+        価値観が合うかどうかを確認する時間です。
+        お気軽にご予約ください。
+      </p>
+
+    </div>
+
+    <form id="reserveForm" class="reserve-form">
+
+      <div class="form-group">
+
+        <label for="name">お名前</label>
+
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="山田 太郎"
+          required
+        />
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="email">メールアドレス</label>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="example@email.com"
+          required
+        />
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="phone">電話番号（任意）</label>
+
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="09012345678"
+        />
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="memo">ひとこと（任意）</label>
+
+        <textarea
+          id="memo"
+          name="memo"
+          rows="4"
+          placeholder="気になっていることがあればお気軽にご記入ください。"
+        ></textarea>
+
+      </div>
+
+      <!-- hidden values -->
+
+      <input type="hidden" id="prefecture" name="prefecture" />
+      <input type="hidden" id="businessStatus" name="businessStatus" />
+      <input type="hidden" id="projectInterest" name="projectInterest" />
+      <input type="hidden" id="mainInterest" name="mainInterest" />
+      <input type="hidden" id="source" name="source" />
+      <input type="hidden" id="keyword" name="keyword" />
+
+      <button type="submit" class="primary-btn full">
+
+        予約へ進む
+
+      </button>
+
+    </form>
+
+    <div class="modal-note">
+
+      送信後、空き時間選択画面へ進みます。
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================================
+SCRIPTS
+========================================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
